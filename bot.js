@@ -11,6 +11,17 @@ client.on('ready', () => {
 client.on('messageCreate', (msg) => {
 	if (msg.content.toLowerCase() === 'ping') {
 		msg.reply('Pong!')
+	} else if (msg.content.toLowerCase() === "channel") {
+		msg.guild.channels.create({
+			name: "channel-name-test",
+			type: 0,
+			permissionOverwrites: [{
+				id: msg.guild.id,
+				allow: ["ViewChannel"],
+			}]
+		});
+		msg.channel.send("Channel created!");
+
 	}
 });
 
